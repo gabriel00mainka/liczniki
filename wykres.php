@@ -6,15 +6,15 @@
             mysqli_query($polaczenie, "SET NAMES 'utf8' COLLATE 'utf8_polish_ci'");
             mysqli_select_db($polaczenie, $database);
 
-	    $zapytanie = "SELECT * FROM baza";
+	    $zapytanie = "SELECT * FROM msrts_15 WHERE id_c=0";
 	    $rezultat = mysqli_query($polaczenie, $zapytanie);
 	    $ile = mysqli_num_rows($rezultat);
 
 	    $dataPoints = array();
 	//echo "$row['date']</br>";
-	    for($i = 0; $i < $ile; $i++)
+	    for($i = 0; $i <= $ile; $i++)
 	    {
-	    	$y = $row['measurement'];
+	    	$y = $row['msrt'];
 	    	array_push($dataPoints, array("x" => $i, "y" => $y));
 		$row = mysqli_fetch_assoc($rezultat);
 	    }                
@@ -37,10 +37,13 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		text: "Zużycie energii"
 	},
 	axisX:{
-	title: "Numer pomiaru"
+	title: "Numer pomiaru",
+	gridDashType: "line",
+	gridThickness: 1
 	},
 	axisY:{
-	title: "Zużycie [kWh]"	
+	title: "Zużycie [kWh]",
+	interval: 0.5
 	},
 	data: [{
 		type: "area",     
