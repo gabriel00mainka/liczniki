@@ -25,7 +25,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"> 
     <title>Wyswietlanie w tabeli</title>
-
+<link rel="stylesheet" href="styl.css" type="text/css">
 </head>
     
 <body>
@@ -33,7 +33,7 @@
 <input type="button" value="Zobacz wykres" onClick="location.href='wykres.php';"></br></br>
 <input type="button" value="Powrót do strony głównej" onClick="location.href='index.html';"></br></br>
 <div>    
-<table width="1000" align="center" border="1" bordercolor="#d5d5d5"  cellpadding="0" cellspacing="0">
+<table width="1000" align="center" border="1" bordercolor="#8a8a8a"  cellpadding="0" cellspacing="0">
         <tr>
         <?php
             //ini_set("display_errors", 0);
@@ -53,12 +53,12 @@
 	    $ile2 = mysqli_num_rows($rezultat2);
 
                     echo "Wykonano ".$ile2." pomiarów.</br>";
-		    echo "Najnowszych ".$ile." pomiarów.";
+		    echo "Najnowszych ".$ile." pomiarów:";
                 if ($ile>=1) 
                 {
                     echo<<<END
-                    <td width="20" align="center" bgcolor="e5e5e5">data pomiaru</td>
-                    <td width="50" align="center" bgcolor="e5e5e5">stan licznika [kWh]</td>
+                    <td width="20" align="center" bgcolor="#ffffff">data pomiaru</td>
+                    <td width="50" align="center" bgcolor="#ffffff">stan licznika [kWh]</td>
                     </tr><tr>
                     END;
                 }
@@ -69,11 +69,10 @@
                 $row = mysqli_fetch_assoc($rezultat);
                 $a1 = $row['date'];
                 $a2 = $row['measurement'];
-                        
-                
+		
                 echo<<<END
-                <td width="20" align="center">$a1</td>
-                <td width="50" align="center">$a2</td>
+                <td width="20" align="center" bgcolor="#ffffff">$a1</td>
+                <td width="50" align="center" bgcolor="#ffffff">$a2</td>
                 </tr><tr>
                 END;        
                 }

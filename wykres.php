@@ -11,7 +11,7 @@
 	    $ile = mysqli_num_rows($rezultat);
 
 	    $dataPoints = array();
-
+	//echo "$row['date']</br>";
 	    for($i = 0; $i < $ile; $i++)
 	    {
 	    	$y = $row['measurement'];
@@ -25,6 +25,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"> 
     <title>Wykres</title>
+<link rel="stylesheet" href="styl.css" type="text/css">
 <script>
 window.onload = function () {
  
@@ -34,6 +35,12 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	zoomEnabled: true,
 	title: {
 		text: "Zużycie energii"
+	},
+	axisX:{
+	title: "Numer pomiaru"
+	},
+	axisY:{
+	title: "Zużycie [kWh]"	
 	},
 	data: [{
 		type: "area",     
@@ -53,11 +60,8 @@ chart.render();
 
 </br>
 
-
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-
 
 </body>
 </html>
