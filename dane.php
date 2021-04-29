@@ -40,7 +40,7 @@ Aby zobaczyć pomiary przedstawione na wykresie, naciśnij poniższy przycisk.</
 <div class="content">    
 <table width="1000" align="center" border="1" bordercolor="#8a8a8a"  cellpadding="0" cellspacing="0">
         <tr>
-        <?php
+<?php
             //ini_set("display_errors", 0);
             //require_once "dbconnect.php";
 	    //$polaczenie = mysqli_connect($host, $user, $password);
