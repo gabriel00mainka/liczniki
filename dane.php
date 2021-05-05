@@ -5,7 +5,9 @@
             mysqli_query($polaczenie, "SET CHARSET utf8");
             mysqli_query($polaczenie, "SET NAMES 'utf8' COLLATE 'utf8_polish_ci'");
             mysqli_select_db($polaczenie, $database);
-
+            
+            $a = $_POST['x'];
+            echo "czas od $a";  
 	    $zapytanie = "SELECT * FROM msrts_15";
 	    $rezultat = mysqli_query($polaczenie, $zapytanie);
 	    $ile = mysqli_num_rows($rezultat);
@@ -29,10 +31,11 @@
 </head>
     
 <body>
+
 <input type="button" value="Powrót do strony głównej" onClick="location.href='index.html';"></br>
 <div class="center">
 	<ol>Tabela z pomiarami</ol>
-
+    
 <input type="button" value="Zczytaj aktualny stan licznika" onClick="window.location.reload()"></br></br>
 Aby zobaczyć pomiary przedstawione na wykresie, naciśnij poniższy przycisk.</br></br>
 <input type="button" value="Zobacz wykres" onClick="location.href='wykres.php';"></br></br>

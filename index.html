@@ -17,24 +17,7 @@
 		Jest to strona internetowa przeznaczona do zdalnego czytania liczników. Konieczne jest uzupełnienie wszystkich pól w tabeli poniżej aby wyświetlić żądane pomiary.
 		</p>
 		</br></br>
-		<!-- Aby zobaczyć dane w tabeli naciśnij poniższy przycisk.
-		</br></br>
-
-		<div class="center">
-			<input type="button" style=" background:LightGray; width:150px; height:40px;" value="Zobacz dane" onClick="location.href='dane.php';">
-		</br></br>
 		
-	</div>
-
-	Aby zobaczyć dane na wykresie naciśnij poniższy przycisk. 
-	</br></br>
-
-	<div class="center">
-		<input type="button" style=" background:LightGray; width:150px; height:40px;" value="Zobacz dane" value="Zobacz dane" onClick="location.href='wykres.php';"></br></br>
-	</div> -->
-
-	<!-- </div>
-	<div class="white"> -->
 		<table width="500" align="center" border="1" bordercolor="#8a8a8a"  cellpadding="0" cellspacing="0">
 			<tr>
 				<td colspan="2">Uzupełnij aby wyświetlić pomiary</td>
@@ -45,38 +28,38 @@
 					<form action="action.php" method="post">
 						<select name="select1" style="width:150px; height:30px;">
 							<option value="wybierz_opcje" selected>Wybierz opcje</option>
-							<option value="wykres">Wykres</option>
-							<option value="dane">Tebela</option>
+							<option name="wykres" value="wykres">Wykres</option>
+							<option name="tabela" value="tabela">Tebela</option>
 						</select>
 				</td>
 			</tr>
 			<tr>
 				<td>Data od</td>
 				<td>
-					<input type="date" id="start_date" name="trip-start" value="2021-04-22" min="2021-03-01" max="2080-12-31">
+					<input type="date" id="start_date" name="date_start" value="2021-04-22" min="2021-03-01" max="2080-12-31">
 				</td>
 			</tr>
 			<tr>
 				<td>Data do</td>
 				<td>
-					<input type="date" id="stop_date" name="trip-start" value="2021-04-22" min="2021-03-01" max="2080-12-31">
+					<input type="date" id="stop_date" name="date_stop" value="2021-04-22" min="2021-03-01" max="2080-12-31">
 				</td>
 			</tr>
 			<tr>
 				<td>Czas od</td>
 				<td>
-					<input type="time" id="start_time" name="appt" value="00:00" min="00:00" max="23:00" required>
+					<input type="time" id="start_time" name="time_start" value="00:00" min="00:00" max="23:00" required>
 				</td>
 			</tr>
 			<tr>
 				<td>Czas do</td>
 				<td>
-					<input type="time" id="stop_time" name="appt" value="00:00" min="00:00" max="23:00" required>
+					<input type="time" id="stop_time" name="time_stop" value="00:00" min="00:00" max="23:00" required>
 				</td>
 			</tr>	
-						<tr>
-							<td colspan="2"><input type="submit" name="submit" style=" background:LightGray; width:500px; height:30px;" value="Zobacz pomiary"></td>
-						</tr>
+					<tr>
+						<td colspan="2"><input type="submit" name="submit" style=" background:LightGray; width:500px; height:30px;" value="Zobacz pomiary"></td>
+					</tr>
 					</form>
 
 		</table>

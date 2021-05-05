@@ -7,7 +7,8 @@ if(isset($_POST['select1']))
         case 'wykres':
             header("Location: wykres.php");
             break;
-        case 'dane':
+        case 'tabela':
+            
             header("Location: dane.php");
             break;
         // case 'wybierz_opcje':
@@ -15,6 +16,8 @@ if(isset($_POST['select1']))
         //     break;
         default:
             echo "Wróć do strony głównej i uzupełnij od nowa wszystkie opcje!</br>";
+            $x = $_POST['date_start'];
+            echo "czas od $x";
             break;
     }
 }
@@ -31,7 +34,11 @@ if(isset($_POST['select1']))
     <body>
         <div class="center">
             <input type="button" style="width:200px; height:40px;" value="Powrót do strony głównej" onClick="location.href='index.html';">
-            </br>
+        <form action="dane.php" method="post">
+        <input type=submit value="Tak! To moje imie">
+        <input type="hidden" name="date_start" value="<?php echo $x;?>" />
+        </form>
+        </br>
         </div>
     </body>
 </html>
