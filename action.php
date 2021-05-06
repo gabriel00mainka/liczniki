@@ -8,16 +8,21 @@ if(isset($_POST['select1']))
             header("Location: wykres.php");
             break;
         case 'tabela':
-            
+            session_start();
+            $_SESSION['date_start'] = $_POST['date_start'];
+            $_SESSION['date_stop'] = $_POST['date_stop'];
+            $_SESSION['time_start'] = $_POST['time_start'];
+            $_SESSION['time_stop'] = $_POST['time_stop'];
             header("Location: dane.php");
+            exit();
             break;
         // case 'wybierz_opcje':
         //     echo "Wybierz opcję!";
         //     break;
         default:
             echo "Wróć do strony głównej i uzupełnij od nowa wszystkie opcje!</br>";
-            $x = $_POST['date_start'];
-            echo "czas od $x";
+            // $date_start = $_POST['date_start'];
+            // echo "czas od $date_start";
             break;
     }
 }
@@ -34,10 +39,11 @@ if(isset($_POST['select1']))
     <body>
         <div class="center">
             <input type="button" style="width:200px; height:40px;" value="Powrót do strony głównej" onClick="location.href='index.html';">
-        <form action="dane.php" method="post">
-        <input type=submit value="Tak! To moje imie">
-        <input type="hidden" name="date_start" value="<?php echo $x;?>" />
-        </form>
+            
+            <!-- <form action="dane.php" method="post">
+            <input type=submit value="Tak! To moje imie">
+            <input type="hidden" name="date_start" value="<?php echo $date_start;?>" />
+        </form> -->
         </br>
         </div>
     </body>
