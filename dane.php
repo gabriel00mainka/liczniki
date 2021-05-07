@@ -51,18 +51,22 @@ Aby zobaczyć pomiary przedstawione na wykresie, naciśnij poniższy przycisk.</
         <tr>
 <?php  
     // $zapytanie1 = "SELECT * FROM msrts_15 WHERE id_c=0 ORDER BY date_time DESC LIMIT 20";
-    $zapytanie1 = "SELECT * FROM msrts_15 WHERE id_c=0 AND date_time>='$date_start $time_start' AND date_time<='$date_stop $time_stop'";
-    $zapytanie2 = "SELECT * FROM msrts_15 WHERE id_c=0";
+    $zapytanie1 = "SELECT * FROM msrts_15 WHERE id_c=0 AND date_time>='$date_start $time_start' AND date_time<='$date_stop $time_stop'ORDER BY msrt DESC";
+    $zapytanie2 = "SELECT * FROM msrts_15 WHERE id_c=0 ORDER BY msrt DESC LIMIT 1";
 
     $rezultat = mysqli_query($polaczenie, $zapytanie1);
     $rezultat2 = mysqli_query($polaczenie, $zapytanie2);
     
     $ile = mysqli_num_rows($rezultat);
     $ile2 = mysqli_num_rows($rezultat2);
+
+    $row = mysqli_fetch_assoc($rezultat);
+    $a2 = $row['msrt'];
     // echo "$zapytanie1";
     echo'<div class="white">';
-    echo "Ilość pomiarów w bazie: ".$ile2."</br>";
-    echo "Najnowszych ".$ile." pomiarów:</div>";
+    echo "Najnowszy pomiar: ".$a2."</br>";
+    echo "Ilość pomiarów w bazie w zadanym przedziale: ".$ile."</div>";
+    
 ?>
 </div><div class="black">
 <?php

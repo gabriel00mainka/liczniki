@@ -5,7 +5,13 @@ if(isset($_POST['select1']))
     switch ($action1) 
     {
         case 'wykres':
+            session_start();
+            $_SESSION['date_start'] = $_POST['date_start'];
+            $_SESSION['date_stop'] = $_POST['date_stop'];
+            $_SESSION['time_start'] = $_POST['time_start'];
+            $_SESSION['time_stop'] = $_POST['time_stop'];
             header("Location: wykres.php");
+            exit();
             break;
         case 'tabela':
             session_start();
@@ -26,6 +32,11 @@ if(isset($_POST['select1']))
             break;
     }
 }
+
+        exec('cd /var/www/html/liczniki');
+        $a = exec('python3 1.py');
+        echo $a;
+
 ?>
 
 <!DOCTYPE html>
