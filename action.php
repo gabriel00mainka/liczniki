@@ -22,20 +22,11 @@ if(isset($_POST['select1']))
             header("Location: dane.php");
             exit();
             break;
-        // case 'wybierz_opcje':
-        //     echo "Wybierz opcję!";
-        //     break;
         default:
             echo "Wróć do strony głównej i uzupełnij od nowa wszystkie opcje!</br>";
-            // $date_start = $_POST['date_start'];
-            // echo "czas od $date_start";
             break;
     }
 }
-
-        exec('cd /var/www/html/liczniki');
-        $a = exec('python3 1.py');
-        echo $a;
 
 ?>
 
@@ -50,11 +41,6 @@ if(isset($_POST['select1']))
     <body>
         <div class="center">
             <input type="button" style="width:200px; height:40px;" value="Powrót do strony głównej" onClick="location.href='index.html';">
-            
-            <!-- <form action="dane.php" method="post">
-            <input type=submit value="Tak! To moje imie">
-            <input type="hidden" name="date_start" value="<?php echo $date_start;?>" />
-        </form> -->
         </br>
         </div>
     </body>

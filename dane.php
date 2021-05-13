@@ -1,31 +1,25 @@
 <?php
-            ini_set("display_errors", 0);
-            require_once "dbconnect.php";
-	    $polaczenie = mysqli_connect($host, $user, $password);
-            mysqli_query($polaczenie, "SET CHARSET utf8");
-            mysqli_query($polaczenie, "SET NAMES 'utf8' COLLATE 'utf8_polish_ci'");
-            mysqli_select_db($polaczenie, $database);
-            
-            // $date_start = $_POST['date_start'];
-            // echo "czas od $date_start";  
-            session_start();
-            $date_start = $_SESSION['date_start'];
-            $date_stop = $_SESSION['date_stop'];
-            $time_start = $_SESSION['time_start'];
-            $time_stop = $_SESSION['time_stop'];
-            // echo "$date_start";
-	    $zapytanie = "SELECT * FROM msrts_15";
-	    $rezultat = mysqli_query($polaczenie, $zapytanie);
-	    $ile = mysqli_num_rows($rezultat);
+    ini_set("display_errors", 0);
+    require_once "dbconnect.php";
+    $polaczenie = mysqli_connect($host, $user, $password);
+    mysqli_query($polaczenie, "SET CHARSET utf8");
+    mysqli_query($polaczenie, "SET NAMES 'utf8' COLLATE 'utf8_polish_ci'");
+    mysqli_select_db($polaczenie, $database);
+    
+    // $date_start = $_POST['date_start'];
+    // echo "czas od $date_start";  
+    session_start();
+    $date_start = $_SESSION['date_start'];
+    $date_stop = $_SESSION['date_stop'];
+    $time_start = $_SESSION['time_start'];
+    $time_stop = $_SESSION['time_stop'];
+    // echo "$date_start";
 
-	  //  $dataPoints = array();
+    $zapytanie = "SELECT * FROM msrts_15";
+    $rezultat = mysqli_query($polaczenie, $zapytanie);
+    $ile = mysqli_num_rows($rezultat);
 
-	  //  for($i = 0; $i < $ile; $i++)
-	  //  {
-	  //  	$y = $row['measurement'];
-	 //   	array_push($dataPoints, array("x" => $i, "y" => $y));
-	//	$row = mysqli_fetch_assoc($rezultat);
-	   // }                
+              
 ?>
 
 <!DOCTYPE html>
@@ -40,14 +34,13 @@
 
 <input type="button" value="Powrót do strony głównej" onClick="location.href='index.html';"></br>
 <div class="center">
-	<ol>Tabela z pomiarami</ol>
-    
-<input type="button" value="Zczytaj aktualny stan licznika" onClick="window.location.reload()"></br></br>
+
+</br>
 Aby zobaczyć pomiary przedstawione na wykresie, naciśnij poniższy przycisk.</br></br>
 <input type="button" value="Zobacz wykres" onClick="location.href='wykres.php';"></br></br>
-</br></div>
+</div>
 <div class="content">    
-<table width="1000" align="center" border="1" bordercolor="#8a8a8a"  cellpadding="0" cellspacing="0">
+<table width="800" align="center" border="1" bordercolor="#8a8a8a"  cellpadding="0" cellspacing="0">
         <tr>
 <?php  
     // $zapytanie1 = "SELECT * FROM msrts_15 WHERE id_c=0 ORDER BY date_time DESC LIMIT 20";
@@ -62,15 +55,20 @@ Aby zobaczyć pomiary przedstawione na wykresie, naciśnij poniższy przycisk.</
 
     $row = mysqli_fetch_assoc($rezultat);
     $a2 = $row['msrt'];
-    // echo "$zapytanie1";
+
     echo'<div class="white">';
+    echo'Aktualny stan licznika wynosi: ';
+    exec('cd /var/www/html/liczniki');
+    shell_exec('sudo chmod 777 1.py');
+    $a = shell_exec('python3 1.py');
+    echo $a;
+    echo'<input type="button" value="Zczytaj aktualny stan licznika" onClick="window.location.reload()"></br>';
     echo "Najnowszy pomiar: ".$a2."</br>";
     echo "Ilość pomiarów w bazie w zadanym przedziale: ".$ile."</div>";
     
 ?>
 </div><div class="black">
 <?php
-//echo'</div><div class="date">';
         if ($ile>=1) 
         {
             echo<<<END
@@ -95,16 +93,11 @@ Aby zobaczyć pomiary przedstawione na wykresie, naciśnij poniższy przycisk.</
         }
     echo"</br>";
 
-
-
 ?>
 </tr>
 </table>
 </div>
 </br>
 
-
 </body>
 </html>
-
-
