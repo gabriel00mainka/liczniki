@@ -1,33 +1,32 @@
 <?php
-if(isset($_POST['select1']))
-{
-    $action1 = $_POST['select1'];
-    switch ($action1) 
+    if(isset($_POST['select1']))
     {
-        case 'wykres':
-            session_start();
-            $_SESSION['date_start'] = $_POST['date_start'];
-            $_SESSION['date_stop'] = $_POST['date_stop'];
-            $_SESSION['time_start'] = $_POST['time_start'];
-            $_SESSION['time_stop'] = $_POST['time_stop'];
-            header("Location: wykres.php");
-            exit();
-            break;
-        case 'tabela':
-            session_start();
-            $_SESSION['date_start'] = $_POST['date_start'];
-            $_SESSION['date_stop'] = $_POST['date_stop'];
-            $_SESSION['time_start'] = $_POST['time_start'];
-            $_SESSION['time_stop'] = $_POST['time_stop'];
-            header("Location: dane.php");
-            exit();
-            break;
-        default:
-            echo "Wróć do strony głównej i uzupełnij od nowa wszystkie opcje!</br>";
-            break;
+        $action1 = $_POST['select1'];
+        switch ($action1) 
+        {
+            case 'wykres':
+                session_start();
+                $_SESSION['date_start'] = $_POST['date_start'];
+                $_SESSION['date_stop'] = $_POST['date_stop'];
+                $_SESSION['time_start'] = $_POST['time_start'];
+                $_SESSION['time_stop'] = $_POST['time_stop'];
+                header("Location: wykres.php");
+                exit();
+                break;
+            case 'tabela':
+                session_start();
+                $_SESSION['date_start'] = $_POST['date_start'];
+                $_SESSION['date_stop'] = $_POST['date_stop'];
+                $_SESSION['time_start'] = $_POST['time_start'];
+                $_SESSION['time_stop'] = $_POST['time_stop'];
+                header("Location: dane.php");
+                exit();
+                break;
+            default:
+                echo "Wróć do strony głównej i uzupełnij od nowa wszystkie opcje!</br>";
+                break;
+        }
     }
-}
-
 ?>
 
 <!DOCTYPE html>

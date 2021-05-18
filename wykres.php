@@ -51,7 +51,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	},
 	axisY:{
 	title: "Zużycie [kWh]",
-	interval: 0.5
+	interval: 1
 	},
 	data: [{
 		type: "area",     
